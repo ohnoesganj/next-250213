@@ -6,6 +6,7 @@ import com.example.next.domain.post.comment.entity.Comment;
 import com.example.next.domain.post.post.entity.Post;
 import com.example.next.domain.post.post.service.PostService;
 import com.example.next.global.Rq;
+import com.example.next.global.dto.Empty;
 import com.example.next.global.dto.RsData;
 import com.example.next.global.exception.ServiceException;
 import io.swagger.v3.oas.annotations.Operation;
@@ -63,7 +64,7 @@ public class ApiV1CommentController {
     @Operation(summary = "댓글 작성", description = "게시글에 댓글을 작성합니다.")
     @PostMapping
     @Transactional
-    public RsData<Void> write(@PathVariable long postId, @RequestBody WriteReqBody reqBody) {
+    public RsData<Empty> write(@PathVariable long postId, @RequestBody WriteReqBody reqBody) {
         Member actor = rq.getActor();
         Comment comment = _write(postId, actor, reqBody.content());
 
@@ -82,7 +83,7 @@ public class ApiV1CommentController {
     @Operation(summary = "댓글 수정", description = "게시글의 댓글을 수정합니다.")
     @PutMapping("{id}")
     @Transactional
-    public RsData<Void> modify(@PathVariable long postId, @PathVariable long id, @RequestBody ModifyReqBody reqBody) {
+    public RsData<Empty> modify(@PathVariable long postId, @PathVariable long id, @RequestBody ModifyReqBody reqBody) {
 
         Member actor = rq.getActor();
 
@@ -105,7 +106,7 @@ public class ApiV1CommentController {
     @Operation(summary = "댓글 삭제", description = "게시글의 댓글을 삭제합니다.")
     @DeleteMapping("{id}")
     @Transactional
-    public RsData<Void> delete(@PathVariable long postId, @PathVariable long id) {
+    public RsData<Empty> delete(@PathVariable long postId, @PathVariable long id) {
 
         Member actor = rq.getActor();
         Post post = postService.getItem(postId).orElseThrow(
