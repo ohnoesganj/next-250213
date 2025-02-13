@@ -259,18 +259,18 @@ export interface components {
             password: string;
         };
         LoginResBody: {
-            item?: components["schemas"]["MemberDto"];
-            apiKey?: string;
-            accessToken?: string;
+            item: components["schemas"]["MemberDto"];
+            apiKey: string;
+            accessToken: string;
         };
         MemberDto: {
             /** Format: int64 */
-            id?: number;
+            id: number;
             /** Format: date-time */
-            createdDate?: string;
+            createdDate: string;
             /** Format: date-time */
-            modifiedDate?: string;
-            nickname?: string;
+            modifiedDate: string;
+            nickname: string;
         };
         RsDataLoginResBody: {
             code?: string;
@@ -288,15 +288,15 @@ export interface components {
             data?: components["schemas"]["MemberDto"];
         };
         PageDto: {
-            items?: components["schemas"]["PostDto"][];
+            items: components["schemas"]["PostDto"][];
             /** Format: int32 */
-            totalPages?: number;
+            totalPages: number;
             /** Format: int32 */
-            totalItems?: number;
+            totalItems: number;
             /** Format: int32 */
-            currentPageNo?: number;
+            currentPageNo: number;
             /** Format: int32 */
-            pageSize?: number;
+            pageSize: number;
         };
         PostDto: {
             /** Format: int64 */
@@ -319,17 +319,17 @@ export interface components {
         };
         CommentDto: {
             /** Format: int64 */
-            id?: number;
-            content?: string;
+            id: number;
+            content: string;
             /** Format: int64 */
-            postId?: number;
+            postId: number;
             /** Format: int64 */
-            authorId?: number;
-            authorName?: string;
+            authorId: number;
+            authorName: string;
             /** Format: date-time */
-            createdTime?: string;
+            createdTime: string;
             /** Format: date-time */
-            modifiedTime?: string;
+            modifiedTime: string;
         };
         RsDataStatisticsResBody: {
             code?: string;

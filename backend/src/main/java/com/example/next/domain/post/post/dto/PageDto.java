@@ -14,16 +14,12 @@ public class PageDto {
 
     @NonNull
     List<PostDto> items;
-
     @NonNull
     int totalPages;
-
     @NonNull
     int totalItems;
-
     @NonNull
     int currentPageNo;
-
     @NonNull
     int pageSize;
 
