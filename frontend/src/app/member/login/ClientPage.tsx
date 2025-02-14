@@ -15,6 +15,7 @@ export default function ClinetPage() {
         username,
         password,
       },
+      credentials: "include",
     });
     if (response.error) {
       alert(response.error.msg);

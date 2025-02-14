@@ -24,5 +24,6 @@ export default async function Page({
 
   const rsData = response.data;
   const post = rsData.data;
+
   return <ClientPage post={post} />;
 }
