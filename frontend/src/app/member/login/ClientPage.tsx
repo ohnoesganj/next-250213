@@ -1,15 +1,19 @@
 "use client";
 
 import client from "@/lib/backend/client";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function ClinetPage() {
   const router = useRouter();
+
   async function login(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
     const form = e.target as HTMLFormElement;
+
     const username = form.username.value;
     const password = form.password.value;
+
     const response = await client.POST("/api/v1/members/login", {
       body: {
         username,
@@ -17,15 +21,19 @@ export default function ClinetPage() {
       },
       credentials: "include",
     });
+
     if (response.error) {
       alert(response.error.msg);
       return;
     }
+
     router.push(`/post/list`);
   }
+
   return (
     <>
       <div>로그인 페이지</div>
+
       <form onSubmit={login} className="flex flex-col w-1/4 gap-3">
         <input
           type="text"
