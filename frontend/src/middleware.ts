@@ -1,7 +1,21 @@
-import type { NextRequest } from "next/server";
+import { cookies } from "next/headers";
+import { NextResponse, type NextRequest } from "next/server";
+import client from "./lib/backend/client";
 
-export function middleware(request: NextRequest) {
-  console.log("middleware");
+export async function middleware(request: NextRequest) {
+  const reqToken = request.cookies.get("accessToken");
+  const nextResponse = NextResponse.next();
+
+  const response = await client.GET("/api/v1/members/me", {
+    headers: {
+      cookie: (await cookies()).toString(),
+    },
+  });
+
+  const springCookie = response.response.headers.getSetCookie();
+  nextResponse.headers.set("set-cookie", String(springCookie));
+
+  return nextResponse;
 }
 
 export const config = {
