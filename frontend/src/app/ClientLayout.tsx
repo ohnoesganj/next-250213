@@ -3,7 +3,7 @@
 import { components } from "@/lib/backend/apiV1/schema";
 import client from "@/lib/backend/client";
 import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
-import { faBookBookmark } from "@fortawesome/free-solid-svg-icons";
+import { faBookBookmark, faHouse } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import {
@@ -47,9 +47,12 @@ export default function ClinetLayout({
           icon={faThumbsUp}
           className="fa-fw text-4xl text-[red]"
         />
-        <header className="flex justify-end gap-3">
+        <header className="flex justify-end gap-3 px-4">
           <DropdownMenu>
-            <DropdownMenuTrigger>Home</DropdownMenuTrigger>
+            <DropdownMenuTrigger>
+              <FontAwesomeIcon icon={faHouse} />
+              Home
+            </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuLabel>{me.nickname}</DropdownMenuLabel>
               <DropdownMenuSeparator />
