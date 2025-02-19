@@ -2,20 +2,32 @@
 
 import { components } from "@/lib/backend/apiV1/schema";
 import client from "@/lib/backend/client";
+import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
+import { faBookBookmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 
 export default function ClinetLayout({
   children,
   me,
+  fontVariable,
+  fontClassName,
 }: Readonly<{
   children: React.ReactNode;
   me: components["schemas"]["MemberDto"];
+  fontVariable: string;
+  fontClassName: string;
 }>) {
   const isLogined = me.id !== 0;
 
   return (
-    <html lang="en">
-      <body className="min-h-[100dvh] flex flex-col">
+    <html lang="en" className={`${fontVariable}`}>
+      <body className="min-h-[100dvh] flex flex-col ${fontClassName}">
+        <FontAwesomeIcon
+          icon={faThumbsUp}
+          className="fa-fw text-4xl text-[red]"
+        />
+        <FontAwesomeIcon icon={faBookBookmark} />
         <header className="flex gap-3">
           <Link href="/">메인</Link>
           <Link href="/about">소개</Link>
