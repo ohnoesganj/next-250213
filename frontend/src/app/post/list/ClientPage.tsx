@@ -1,5 +1,8 @@
 "use client";
 
+import ComboboxDemo from "@/app/ui-test/ComboBoxDem";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { components } from "@/lib/backend/apiV1/schema";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -42,25 +45,38 @@ export default function ClinetPage({
           );
         }}
       >
-        <select name="keywordType" defaultValue={keywordType}>
-          <option value="title">제목</option>
-          <option value="content">내용</option>
-        </select>
-        <input
-          placeholder="검색어 입력"
-          type="text"
-          name="keyword"
-          defaultValue={keyword}
-        />
-        <input type="submit" value="검색" />
+        {/* <select name="keywordType" defaultValue={keywordType}> */}
+        <option value="title">제목</option>
+        <option value="content">내용</option>
+        {/* </select> */}
+        <div className="flex gap-3 py-3">
+          <ComboboxDemo
+            itemList={[
+              { value: "title", label: "제목" },
+              { value: "content", label: "내용" },
+            ]}
+            title="검색 대상"
+          />
+          <Input
+            type="text"
+            placeholder="검색어 입력"
+            name="keyword"
+            defaultValue={keyword}
+            className="w-[200px]"
+          />
+          <Button>검색</Button>
+        </div>
         <label className="ml-5" htmlFor="">
           페이지당 행 개수 :
         </label>
-        <select name="pageSize" defaultValue={pageSize}>
-          <option value="10">10</option>
-          <option value="30">30</option>
-          <option value="50">50</option>
-        </select>
+        <ComboboxDemo
+          itemList={[
+            { value: "10", label: "10" },
+            { value: "30", label: "20" },
+            { value: "50", label: "30" },
+          ]}
+          title="행 개수"
+        />
       </form>
       <div className="flex gap-3">
         {Array.from({ length: pageDto.totalPages }, (_, i) => i + 1).map(
